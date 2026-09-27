@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}FitBuddy{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="/">FitBuddy</a>
+  <nav>
+    <a href="/">Create Plan</a>
+    <a href="/view-all-users">Admin</a>
+    <a href="/docs">API Docs</a>
+  </nav>
+</header>
+<main class="container">
+{% block content %}{% endblock %}
+</main>
+<footer>FitBuddy · AI-assisted wellness planning · Educational use only</footer>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy — Admin{% endblock %}
+{% block content %}
+<section class="card">
+  <p class="eyebrow">ADMIN VIEW</p>
+  <h1>All users and plans</h1>
+  <p class="small">Local development dashboard. Add ADMIN_TOKEN in .env before exposing the application beyond your own machine.</p>
+</section>
+
+{% for user in users %}
+<section class="card user-card">
+  <div class="result-head">
+    <div>
+      <h2>{{ user.username }}</h2>
+      <p class="small">{{ user.user_id }} · {{ user.goal }} · {{ user.intensity }}</p>
+    </div>
+    <span class="badge">{{ user.plans|length }} plan(s)</span>
+  </div>
+  <div class="profile-grid">
+    <div><span>Age</span><strong>{{ user.age }}</strong></div>
+    <div><span>Weight</span><strong>{{ user.weight }} kg</strong></div>
+    <div><span>Created</span><strong>{{ user.created_at.strftime("%Y-%m-%d %H:%M") }}</strong></div>
+  </div>
+  {% for plan in user.plans %}
+    <h3>Plan #{{ plan.id }}</h3>
+    <pre class="plan compact">{{ plan.original_plan }}</pre>
+    {% if plan.updated_plan %}
+      <h3>Updated plan</h3>
+      <pre class="plan compact">{{ plan.updated_plan }}</pre>
+      <p class="small"><strong>Feedback:</strong> {{ plan.feedback }}</p>
+    {% endif %}
+  {% endfor %}
+</section>
+{% else %}
+<section class="card"><p>No users yet. Create your first plan from the home page.</p></section>
+{% endfor %}
+{% endblock %}
